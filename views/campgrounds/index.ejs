@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs') %>
+
+	 <% if(currentUser){ %>
+	<h4>Welcome, <%= currentUser.username %> !!!</h4>
+	<% } %>
+
+
+<div class='container'>
+	
+<header class='jumbotron'>
+	<h1>
+		Welcome to the Campgounds
+	</h1>
+	
+	<p>
+		View our camps and add your own to share with the world
+	</p>
+	<p>
+		<a class='btn btn-lg btn-primary' href='/campgrounds/new'>Add a new campground</a>
+	</p>
+	
+	
+</header>
+	
+			<h3>
+			Most popular campgrounds
+		</h3>
+		
+
+	<div class='row text-center' style='display: flex; flex-wrap:wrap;'>
+
+		
+		
+<% campgrounds.forEach(camp => { %>
+	<div class='col-md-3 col-sm-6'>
+	<div class='thumbnail'>
+		<img src= <%= camp.image %> >
+		<div class='caption'>
+			<h4>
+				<%= camp.name %>
+			</h4>
+			<a href= <%= '/campgrounds/'+camp._id %> class='btn btn-primary' >More info</a>
+		</div>
+
+	</div>
+		
+	</div>
+
+<% }) %>
+
+
+	</div>
+
+</div>
+
+<%- include('../partials/footer.ejs') %>

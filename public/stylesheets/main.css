@@ -1,0 +1,17 @@
+
+.thumbnail img {
+	width: 100%
+}
+
+.caption-full {
+	padding: 30px;
+	line-height: 1.8;
+}
+
+.delete-form {
+	display: inline-block;
+}
+
+.text-right {
+	float: right;
+}
