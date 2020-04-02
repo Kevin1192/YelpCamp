@@ -54,6 +54,6 @@ app.use(authRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
 
-app.listen(3000, ()=>{
-	console.log('Camp started at 3000')
+app.listen(process.env.PORT, process.env.IP, ()=>{
+	console.log('Camp App Started!')
 })
