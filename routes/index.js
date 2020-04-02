@@ -16,7 +16,7 @@ router.post('/register', (req, res)=>{
 		if(err){
 			console.log(err);
 			req.flash('error', err.message);
-			return res.render('register');
+			return res.redirect('/register');
 		}
 		passport.authenticate('local')(req, res, ()=>{
 			req.flash('success','Welcome to Campground '+user.name+ "!")
@@ -31,7 +31,7 @@ router.get('/login', (req, res)=>{
 
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/campgrounds',
-	failureRedirect: '/login',
+	failureRedirect: '/register',
 }), (req, res)=>{
 });
 
