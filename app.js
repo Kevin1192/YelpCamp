@@ -10,14 +10,14 @@ var express = require('express'),
 	Comment = require('./models/comment.js'),
 	User = require('./models/user.js'),
 	seedDB = require('./seeds.js');
-
 var commentRoutes = require('./routes/comments.js'),
 	campgroundRoutes = require('./routes/campgrounds.js'),
 	authRoutes = require('./routes/index');
 
+const dataUrl = process.env.DATABASEURL || 'mongodb://localhost/camp'
 
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect('mongodb+srv://Kevi:q691208@cluster0-3xnnp.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dataUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
@@ -55,8 +55,8 @@ app.set('view engine', 'ejs');
 app.use(authRoutes);
 app.use(campgroundRoutes);
 app.use(commentRoutes);
-
-app.listen(process.env.PORT,process.env.IP, ()=>{
-	console.log(process.env.PORT);
+var port = process.env.PORT || 3000;
+app.listen(port,process.env.IP, ()=>{
+	console.log(port);
 	console.log('Camp App Started!')
 })
